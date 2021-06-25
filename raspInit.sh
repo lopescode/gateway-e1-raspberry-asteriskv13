@@ -25,8 +25,8 @@ echo "Configurando o rc.local"
 sudo mv ./rc.local /etc/rc.local
 
 # Reiniciando o serviço de rede
-echo "Reiniciando o serviço de rede, rotas e ssh"
-sudo /etc/init.d/networking restart
+echo "Reiniciando o serviço de rotas e ssh"
+sudo chmod 755 /etc/init.d/routes
 sudo /etc/init.d/routes
 sudo /etc/init.d/ssh restart
 
