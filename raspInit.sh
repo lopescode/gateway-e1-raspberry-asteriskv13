@@ -64,8 +64,8 @@ make && make install
 chmod +x /usr/lib/asterisk/modules/codec_g729.so
 
 echo "Apagando os arquivos compactados dos codecs"
-rm -rf bcg729-1.0.0.tar.gz
-rm -rf asterisk-g72x-1.4.tar.bz2
+sudo rm -rf bcg729-1.0.0.tar.gz
+sudo rm -rf asterisk-g72x-1.4.tar.bz2
 
 echo "Iniciando o serviço do asterisk"
 /etc/init.d/asterisk start
