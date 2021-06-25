@@ -6,7 +6,7 @@ cd /usr/src/gateway-e1-raspberry-asteriskv13/ #
 
 # Configurando alias no bash
 echo "Configurando alias no bash"
-echo "alias 'll=ls -la'" >> ~/.bashrc
+sudo echo "alias 'll=ls -la'" >> ~/.bashrc
 
 # Configurando rede interna
 echo "Configurando rede interna"
