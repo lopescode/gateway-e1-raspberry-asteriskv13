@@ -79,6 +79,7 @@ mv /etc/asterisk/extensions.conf /etc/asterisk/extensions.conf.bkp
 
 echo "Enviando arquivos para suas determinadas pastas"
 mkdir -p /etc/asterisk/krolik
+cd /usr/src/gateway-e1-raspberry-asteriskv13
 mv ./sip-peers.conf /etc/asterisk/krolik
 mv ./sip-trunk.conf /etc/asterisk/krolik
 mv ./sip.conf /etc/asterisk/sip.conf
