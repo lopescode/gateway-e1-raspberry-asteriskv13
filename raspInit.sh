@@ -1,6 +1,24 @@
 #!/bin/sh
 #
 # Configurando rede
+echo "Configurando rede estática"
+echo "auto lo" >> /etc/network/interfaces
+echo "iface lo inet loopback"  >> /etc/network/interfaces
+echo ""  >> /etc/network/interfaces
+echo "auto eth0"  >> /etc/network/interfaces
+echo "iface eth0 inet static"  >> /etc/network/interfaces
+echo "        address 192.168.15.98"  >> /etc/network/interfaces # Alterar
+echo "        netmask 255.255.255.0"  >> /etc/network/interfaces
+echo "        gateway 192.168.15.1" >> /etc/network/interfaces # Alterar
+echo ""  >> /etc/network/interfaces
+echo "auto eth1" >> /etc/network/interfaces
+echo "iface eth1 inet static"  >> /etc/network/interfaces
+echo "        address 10.19.240.202"  >> /etc/network/interfaces # Alterar
+echo "        netmask 255.255.255.248"  >> /etc/network/interfaces
+echo "" >> /etc/network/interfaces
+echo "ip route add 10.255.240.111 via 10.19.240.201 dev eth1" >> /etc/network/interfaces # Alterar
+echo"ip route add 10.255.240.112 via 10.19.240.201 dev eth1"  >> /etc/network/interfaces # Alterar
+
 echo "Configurando servidor DNS"
 echo nameserver 8.8.8.8 > /etc/resolv.conf
 echo nameserver 1.1.1.1 >> /etc/resolv.conf
