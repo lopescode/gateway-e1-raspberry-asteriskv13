@@ -20,6 +20,8 @@ wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.ta
 
 echo "Descompactando o asterisk v13"
 tar -zxvf asterisk-13-current.tar.gz
+
+echo "Apagando o arquivo compactado do asterisk v13"
 rm -rf asterisk-13-current.tar.gz
 
 echo "Instalando o asterisk v13"
@@ -61,8 +63,12 @@ cd asterisk-g72x-1.4
 make && make install
 chmod +x /usr/lib/asterisk/modules/codec_g729.so
 
+echo "Apagando os arquivos compactados dos codecs"
+rm -rf bcg729-1.0.0.tar.gz
+rm -rf asterisk-g72x-1.4.tar.bz2
+
 echo "Iniciando o serviço do asterisk"
-/etc/init.d/asterisk restart
+/etc/init.d/asterisk start
 
 echo "Testando o serviço do asterisk"
 /etc/init.d/asterisk status
