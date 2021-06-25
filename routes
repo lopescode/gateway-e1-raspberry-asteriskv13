@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ifdown eth1
+ifup eth1
+ip route add 10.255.240.111 via 10.19.240.201 dev eth1
+ip route add 10.255.240.112 via 10.19.240.201 dev eth1

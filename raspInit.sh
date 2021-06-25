@@ -1,39 +1,36 @@
 #!/bin/sh
-#
-# Configurando rede
-echo "Configurando rede estática"
-echo "auto lo" >> /etc/network/interfaces
-echo "iface lo inet loopback"  >> /etc/network/interfaces
-echo ""  >> /etc/network/interfaces
-echo "auto eth0"  >> /etc/network/interfaces
-echo "iface eth0 inet static"  >> /etc/network/interfaces
-echo "        address 192.168.15.98"  >> /etc/network/interfaces # Alterar
-echo "        netmask 255.255.255.0"  >> /etc/network/interfaces
-echo "        gateway 192.168.15.1" >> /etc/network/interfaces # Alterar
-echo ""  >> /etc/network/interfaces
-echo "auto eth1" >> /etc/network/interfaces
-echo "iface eth1 inet static"  >> /etc/network/interfaces
-echo "        address 10.19.240.202"  >> /etc/network/interfaces # Alterar
-echo "        netmask 255.255.255.248"  >> /etc/network/interfaces
-echo "" >> /etc/network/interfaces
-echo "ip route add 10.255.240.111 via 10.19.240.201 dev eth1" >> /etc/network/interfaces # Alterar
-echo"ip route add 10.255.240.112 via 10.19.240.201 dev eth1"  >> /etc/network/interfaces # Alterar
 
+# Configurando rede interna
+echo "Configurando rede interna"
+sudo mv ./interfaces /etc/network/interfaces
+
+# Configurando servidor DNS
 echo "Configurando servidor DNS"
-echo nameserver 8.8.8.8 > /etc/resolv.conf
-echo nameserver 1.1.1.1 >> /etc/resolv.conf
+sudo mv ./resolv.conf /etc/resolv.conf
+
+# Configurando as rotas de rede
+echo "Configurando as rotas de rede"
+sudo mv ./routes /etc/init.d/routes
+
+# Configurando o rc.local
+echo "Configurando o rc.local"
+sudo mv ./rc.local /etc/rc.local
 
 # Reiniciando o serviço de rede
-echo "Reiniciando o serviço de rede"
+echo "Reiniciando o serviço de rede, rotas e ssh"
 /etc/init.d/networking restart
+/etc/init.d/routes
+/etc/init.d/ssh restart
 
 # Instalando pacotes do Linux para a instalação do asterisk
 echo "Instalando pacotes do Linux para a instalação do asterisk"
 apt install ssh make vim build-essential git-core subversion libjansson-dev libsqlite3-dev autoconf automake libxml2-dev libncurses5-dev libtool uuid-dev uuid dh-autoreconf -y
 
 # Asterisk v13
+
+cd /usr/src/
+
 echo "Baixando o asterisk v13"
-cd /usr/src
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
 
 echo "Descompactando o asterisk v13"
@@ -42,10 +39,8 @@ tar -zxvf asterisk-13-current.tar.gz
 echo "Apagando o arquivo compactado do asterisk v13"
 rm -rf asterisk-13-current.tar.gz
 
-echo "Instalando o asterisk v13"
+echo "Instalando e configurando o asterisk v13"
 asterisk=$(find . -name "asterisk-13.*")
-
-echo "Configurando o asterisk v13"
 cd $asterisk
 ./contrib/scripts/install_prereq install
 ./bootstrap.sh
@@ -55,8 +50,10 @@ make samples
 make config
 
 # Codec G729
+
+cd /usr/src/
+
 echo "Baixando o codec g729"
-cd /usr/src
 wget http://download-mirror.savannah.gnu.org/releases/linphone/plugins/sources/bcg729-1.0.0.tar.gz
 
 echo "Descompactando o codec g729"
@@ -64,6 +61,7 @@ tar -xzf bcg729-1.0.0.tar.gz
 
 echo "Instalando o codec g729"
 cd bcg729-1.0.0
+
 ./configure --libdir=/lib
 make && make install
 
