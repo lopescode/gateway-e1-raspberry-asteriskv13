@@ -6,29 +6,29 @@ cd /usr/src/gateway-e1-raspberry-asteriskv13/ #
 
 # Configurando rede interna
 echo "Configurando rede interna"
-#sudo mv ./interfaces /etc/network/interfaces
+sudo mv ./interfaces /etc/network/interfaces
 
 # Configurando servidor DNS
 echo "Configurando servidor DNS"
-#sudo mv ./resolv.conf /etc/resolv.conf
+sudo mv ./resolv.conf /etc/resolv.conf
 
 # Configurando as rotas de rede
 echo "Configurando as rotas de rede"
-#sudo mv ./routes /etc/init.d/routes
+sudo mv ./routes /etc/init.d/routes
 
 # Configurando o rc.local
 echo "Configurando o rc.local"
-#sudo mv ./rc.local /etc/rc.local
+sudo mv ./rc.local /etc/rc.local
 
 # Reiniciando o serviço de rede
 echo "Reiniciando o serviço de rotas e ssh"
-#sudo chmod 755 /etc/init.d/routes
-#sudo /etc/init.d/routes
-#sudo /etc/init.d/ssh restart
+sudo chmod 755 /etc/init.d/routes
+sudo /etc/init.d/routes
+sudo /etc/init.d/ssh restart
 
 # Instalando pacotes do Linux para a instalação do asterisk
 echo "Instalando pacotes do Linux para a instalação do asterisk"
-#sudo apt install ssh make vim build-essential git-core subversion libjansson-dev libsqlite3-dev autoconf automake libxml2-dev libncurses5-dev libtool uuid-dev uuid dh-autoreconf -y
+sudo apt install ssh make vim build-essential git-core subversion libjansson-dev libsqlite3-dev autoconf automake libxml2-dev libncurses5-dev libtool uuid-dev uuid dh-autoreconf -y
 
 ##############
 cd /usr/src/ #
@@ -36,15 +36,15 @@ cd /usr/src/ #
 
 # Baixando o asterisk v13
 echo "Baixando o asterisk v13"
-#sudo wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+sudo wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
 
 # Descompactando o asterisk v13
 echo "Descompactando o asterisk v13"
-#sudo tar -zxvf asterisk-13-current.tar.gz
+sudo tar -zxvf asterisk-13-current.tar.gz
 
 # Apagando o arquivo compactado do asterisk v13
 echo "Apagando o arquivo compactado do asterisk v13"
-#sudo rm -rf asterisk-13-current.tar.gz
+sudo rm -rf asterisk-13-current.tar.gz
 
 # Localizando o diretorio do asterisk v13
 echo "Localizando o diretorio do asterisk v13"
