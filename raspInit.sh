@@ -91,7 +91,7 @@ cd /usr/src #
 # Baixando o codec g72x
 sudo wget http://asterisk.hosting.lv/src/asterisk-g72x-1.4.tar.bz2
 
-# Descompactando o codec g729
+# Descompactando o codec g72x
 echo "Descompactando o codec g72x"
 sudo tar -xjf asterisk-g72x-1.4.tar.bz2
 
