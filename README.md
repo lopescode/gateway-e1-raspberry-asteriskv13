@@ -89,7 +89,7 @@
     </p>
     <ul>
         <li>Para instalar o projeto siga as instruções abaixo</li>
-        <p>1. Dar permissão de execução para o raspInit.sh usando o comando <strong>sudo chmod 777 raspInit.sh</strong>
+        <p>1. Dar permissão de execução para o raspInit.sh usando o comando <br><strong>sudo chmod 777 raspInit.sh</strong>
         </p>
-        <p>2. Executar o script com o comando <strong>sudo ./raspInit.sh</strong></p>
+        <p>2. Executar o script com o comando <br><strong>sudo ./raspInit.sh</strong></p>
     </ul>
