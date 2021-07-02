@@ -133,6 +133,12 @@ sudo mv ./sip-trunk.conf /etc/asterisk/krolik
 sudo mv ./sip.conf /etc/asterisk/sip.conf
 sudo mv ./extensions.conf /etc/asterisk/extensions.conf
 
+# Removendo arquivos do /usr/src/
+echo "Removendo arquivos do /usr/src/"
+cd /usr/src/
+sudo rm -rf asterisk*
+sudo rm -rf bcg*
+
 # Aplicando as configurações realizadas
 echo "Aplicando as configurações realizadas"
 sudo asterisk -rx 'sip reload'
