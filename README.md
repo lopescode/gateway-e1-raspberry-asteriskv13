@@ -85,6 +85,9 @@
         <li>Alterar as palavras em negrito para as informações do cliente.</li>
     </ul>
     <p>
+    <h3>Iremos acessar o arquivo <strong>sip.conf</strong> dentro da pasta "gateway-e1-raspberry-asteriskv13"
+        e iremos alterar o <strong>externaddr</strong> para o IP externo e o <strong>localnet</strong> para o ip da rede interna.</h3>
+    <p><img src="assets/externaddr.PNG" alt=""></p>
     <h2>Passo 7 - Como instalar?</h2>
     </p>
     <ul>
