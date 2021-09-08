@@ -16,7 +16,10 @@ if [ "$_IP" ]; then
   printf "My IP addres is %s\n" "$_IP"
 fi
 
+# LOCAL ONDE FICA O SSH
 /etc/init.d/ssh restart || exit 1
-/etc/init.d/routes || exit 1
+
+# LOCAL ONDE FICAM AS ROTAS
+/etc/systemd/system/routes || exit 1
 
 exit 0

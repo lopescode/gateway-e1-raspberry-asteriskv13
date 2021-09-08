@@ -14,16 +14,24 @@ sudo mv ./resolv.conf /etc/resolv.conf
 
 # Configurando as rotas de rede
 echo "Configurando as rotas de rede"
-sudo mv ./routes /etc/init.d/routes
+sudo mv ./routes /etc/systemd/system/routes
 
 # Configurando o rc.local
 echo "Configurando o rc.local"
 sudo mv ./rc.local /etc/rc.local
 
+# Corrigindo problemas de compatibilidade no rc-local.service
+echo "Corrigindo problemas de compatibilidade no rc-local.service"
+sudo systemctl daemon-reload
+sudo mv ./rc-local.service /etc/systemd/system/rc-local.service
+sudo chmod +x /etc/systemd/system/rc-local.service
+systemctl enable rc-local
+systemctl start rc-local
+
 # Reiniciando o serviço de rede
 echo "Reiniciando o serviço de rotas e ssh"
-sudo chmod 755 /etc/init.d/routes
-sudo /etc/init.d/routes
+sudo chmod 755 /etc/systemd/system/routes
+sudo /etc/systemd/system/routes
 sudo /etc/init.d/ssh restart
 
 # Instalando pacotes do Linux para a instalação do asterisk
